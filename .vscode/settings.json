@@ -1,0 +1,10 @@
+{
+    "github.copilot.chat.commitMessageGeneration.instructions": [
+        {
+            "file": ".vscode/.copilot-commit-message-instructions.md"
+        }
+    ],
+    "code-runner.executorMap": {
+        "python": "streamlit run main.py"
+    }
+}
