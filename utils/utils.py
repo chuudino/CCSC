@@ -6,7 +6,7 @@ from .menu import menu
 dotenv.load_dotenv()
 
 
-def init_page():
+def init_page(page_name: str = "home"):
     DEV = os.getenv("dev", "false").lower() == "true"
     if DEV:
         pass
@@ -21,6 +21,8 @@ def init_page():
 
     st.set_page_config(page_title="CCSC Website", page_icon="⛪", layout="wide")
     st.logo("static/images/logo.png")
+    if page_name not in st.session_state:
+        st.session_state.page_name = page_name
     menu()
 
     # 添加版權聲明
