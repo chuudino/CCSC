@@ -1,7 +1,8 @@
 import streamlit as st
 from utils import init_page
 
-init_page(page_name="What is CCSC")  # 初始化頁面設定
+st.set_page_config(page_title="What is CCSC", page_icon="❓", layout="wide")
+st.logo("static/images/logo.png")
 
 # 這之後可以加入你的頁面內容
 st.title("小會是甚麼")

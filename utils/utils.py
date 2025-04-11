@@ -11,7 +11,6 @@ def init_page(page_name: str = "home"):
     if DEV:
         pass
         # import subprocess
-
         # try:
         #     subprocess.run(
         #         ["pipreqs", ".", "--force"], check=True, text=True, capture_output=True
