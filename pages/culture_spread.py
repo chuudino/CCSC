@@ -1,7 +1,6 @@
 import streamlit as st
 from utils import init_page
 
-init_page()  # 初始化頁面設定
+init_page(page_name="culture_spread")  # 初始化頁面設定並設置對應的 page_name
 
-# 這之後可以加入你的頁面內容
-st.title("你的頁面標題")
+st.title("文化福傳")

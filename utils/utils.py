@@ -18,7 +18,27 @@ def init_page(page_name: str = "home"):
         # except Exception as e:
         #     print(f"命令執行失敗：\n{e}")
 
-    st.set_page_config(page_title="CCSC Website", page_icon="⛪", layout="wide")
+    # 設置頁面配置和標題
+    page_titles = {
+        "home": "首頁",
+        "about_us": "關於我們",
+        "what_is_ccsc": "小會是甚麼",
+        "vision_ccsc": "宗旨與精神",
+        "history_ccsc": "歷史沿革",
+        "timeline_ccsc": "大事年表",
+        "activities": "活動",
+        "serviceslife": "服務與生活",
+        "calendar": "行事曆",
+        "calendar_branch": "分會行事曆",
+        "publications": "出版品",
+        "search": "搜尋",
+        "taipei_branch": "台北分會",
+        "culture_spread": "文化福傳",
+        "wellspring": "心泉",
+    }
+
+    page_title = page_titles.get(page_name, "CCSC Website")
+    st.set_page_config(page_title=f"{page_title} - CCSC", page_icon="⛪", layout="wide")
     st.logo("static/images/logo.png")
     if page_name not in st.session_state:
         st.session_state.page_name = page_name
@@ -41,16 +61,3 @@ def init_page(page_name: str = "home"):
         """,
         unsafe_allow_html=True,
     )
-
-
-#     st.write(
-#         """
-# <style>
-#     /* 隱藏多餘元素 */
-#     [data-testid="stToolbar"], [data-testid="stDecoration"], [data-testid="stHeader"], footer{
-#         display: none !important;
-#     }
-# </style>
-# """,
-#         unsafe_allow_html=True,
-#     )

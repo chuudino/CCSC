@@ -1,8 +1,8 @@
 import streamlit as st
 from utils import init_page
 
-st.set_page_config(page_title="About Us", page_icon="👨‍👩‍👧‍👦", layout="wide")
-st.logo("static/images/logo.png")
+init_page(page_name="about_us")  # 初始化頁面設定並設置對應的 page_name
+
 st.title("關於我們")
 
 st.sidebar.title("導航")
