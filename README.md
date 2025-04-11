@@ -14,19 +14,19 @@
 
 ## ✨ 功能特色
 
-- **首頁**: 組織基本信息、聯繫方式和地理位置
-- **關於我們**: 小會歷史、使命和價值觀
+- **首頁**: 組織基本信息、聯繫方式
+- **關於我們**: 小會歷史、願景、使命和時間軸
 - **活動**: 最新活動公告和台北分會特別活動
-- **服務與生活**: 展示小會的服務項目和日常生活
+- **服務與生活**: 展示小會的服務項目和文化福傳
 - **行事曆**: 小會活動行事曆和分會行事曆
 - **出版品**: 提供「心泉」等出版物信息
 - **搜尋**: 網站內容搜尋功能
 
 ## 🛠️ 技術架構
 
-- **前端框架**: Streamlit
+- **前端框架**: Streamlit (v1.42.0)
 - **程式語言**: Python
-- **環境配置**: Dotenv
+- **環境配置**: python-dotenv (v1.0.1)
 - **視覺設計**: HTML/CSS (Streamlit自定義組件)
 
 ## 📦 安裝指南
@@ -59,7 +59,7 @@
 streamlit run main.py
 ```
 
-應用程式將在本地端啟動，通常在 <http://localhost:8501>
+應用程式將在本地端啟動，通常在 http://localhost:8501
 
 ## 📂 專案結構
 
@@ -70,36 +70,38 @@ CCSC/
 ├── requirements.txt        # 依賴套件
 │
 ├── pages/                  # 網站各頁面
-│   ├── about_us.py         # 關於我們
-│   ├── activities.py       # 活動
-│   ├── calendar.py         # 行事曆
-│   ├── calendar_branch.py  # 分會行事曆
-│   ├── culture_spread.py   # 文化福傳
-│   ├── publications.py     # 出版品
-│   ├── search.py           # 搜尋
-│   ├── serviceslife.py     # 服務與生活
-│   ├── taipei_branch.py    # 台北分會
+│   ├── about_us.py        # 關於我們
+│   ├── activities.py      # 活動
+│   ├── calendar.py        # 行事曆
+│   ├── calendar_branch.py # 分會行事曆
+│   ├── culture_spread.py  # 文化福傳
+│   ├── history_ccsc.py    # 小會歷史
+│   ├── publications.py    # 出版品
+│   ├── search.py         # 搜尋
+│   ├── serviceslife.py   # 服務與生活
+│   ├── taipei_branch.py   # 台北分會
+│   ├── timeline_ccsc.py   # 小會時間軸
+│   ├── vision_ccsc.py    # 小會願景
 │   ├── wellspring_of_the_soul.py  # 心泉
-│   └── what_is_society.py  # 小會是什麼
+│   └── what_is_ccsc.py   # 小會介紹
 │
-├── static/                 # 靜態資源
-│   └── images/             # 圖片資源
-│       ├── banner.jpg      
-│       ├── logo.png        
-│       ├── logo.svg        
+├── static/                # 靜態資源
+│   └── images/           # 圖片資源
+│       ├── banner.jpg    
+│       ├── logo.png      
+│       ├── logo.svg      
 │       └── 背景素材.jpg
 │
-└── utils/                  # 工具函數
+└── utils/                # 工具函數
     ├── __init__.py
-    ├── menu.py             # 導航菜單
-    └── utils.py            # 通用工具
-```
+    ├── menu.py          # 導航菜單
+    └── utils.py         # 通用工具
 
 ## 📞 聯絡資訊
 
 - **總會地址**: 台北市中山區林森北路73號2樓
 - **聯絡電話**: (8862) 2523-0538
-- **Email**: <ccscasso@gmail.com>
+- **Email**: ccscasso@gmail.com
 
 ## 💰 支持我們
 
