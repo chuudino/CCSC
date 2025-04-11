@@ -12,7 +12,10 @@ def menu():
         st.sidebar.page_link("pages/publications.py", label="出版品", icon="📚")
         st.sidebar.page_link("pages/search.py", label="搜尋", icon="🔍")
     elif st.session_state.page_name == "about_us":
-        st.sidebar.page_link("pages/what_is_society.py", label="小會是什麼？")
+        st.sidebar.page_link("pages/what_is_ccsc.py", label="小會是什麼？")
+        st.sidebar.page_link("pages/Wission_ccsc.py", label="宗旨與精神")
+        st.sidebar.page_link("pages/History_ccsc.py", label="歷史沿革")
+        st.sidebar.page_link("pages/Timeline_ccsc.py", label="大事年表")
     elif st.session_state.page_name == "activities":
         st.sidebar.page_link("pages/taipei_branch.py", label="台北分會")
     elif st.session_state.page_name == "serviceslife":
