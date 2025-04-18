@@ -14,10 +14,10 @@ def menu():
     elif st.session_state.page_name == "about_us":
         st.sidebar.page_link("pages/about_us.py", label="關於我們", icon="👨‍👩‍👧‍👦")
     elif st.session_state.page_name == "activities":
-        st.sidebar.page_link("pages/taipei_branch.py", label="台北分會")
+        st.sidebar.page_link("pages/taipei_branch.py", label="活動", icon="🎯")
     elif st.session_state.page_name == "serviceslife":
-        st.sidebar.page_link("pages/culture_spread.py", label="文化福傳")
+        st.sidebar.page_link("pages/culture_spread.py", label="服務與生活")
     elif st.session_state.page_name == "calendar":
-        st.sidebar.page_link("pages/calendar_branch.py", label="分會行事曆")
+        st.sidebar.page_link("pages/calendar_branch.py", label="行事曆")
     elif st.session_state.page_name == "publications":
-        st.sidebar.page_link("pages/wellspring_of_the_Soul.py", label="心泉")
+        st.sidebar.page_link("pages/wellspring_of_the_Soul.py", label="出版品")

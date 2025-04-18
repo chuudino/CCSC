@@ -3,6 +3,9 @@ from utils import init_page
 
 init_page(page_name="Vision of CCSC")  # 初始化頁面設定
 
+if st.sidebar.button("↩️ 返回上一頁"):
+    st.switch_page("pages/about_us.py")
+
 # 這之後可以加入你的頁面內容
 st.title("宗旨與精神")
 st.write(
