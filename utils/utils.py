@@ -1,23 +1,8 @@
-import os
-import dotenv
 import streamlit as st
 from .menu import menu
 
-dotenv.load_dotenv()
-
 
 def init_page(page_name: str = "home"):
-    DEV = os.getenv("dev", "false").lower() == "true"
-    if DEV:
-        pass
-        # import subprocess
-        # try:
-        #     subprocess.run(
-        #         ["pipreqs", ".", "--force"], check=True, text=True, capture_output=True
-        #     )
-        # except Exception as e:
-        #     print(f"命令執行失敗：\n{e}")
-
     # 設置頁面配置和標題
     page_titles = {
         "home": "首頁",
