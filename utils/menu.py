@@ -20,4 +20,6 @@ def menu():
     elif st.session_state.page_name == "calendar":
         st.sidebar.page_link("pages/calendar_branch.py", label="行事曆")
     elif st.session_state.page_name == "publications":
-        st.sidebar.page_link("pages/wellspring_of_the_Soul.py", label="出版品")
+        st.sidebar.page_link("pages/wellspring_of_the_Soul.py", label="心泉", icon="💧")
+    elif st.session_state.page_name == "wellspring":
+        st.sidebar.page_link("pages/publications.py", label="出版品", icon="📚")
