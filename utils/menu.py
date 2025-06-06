@@ -14,7 +14,17 @@ def menu():
     elif st.session_state.page_name == "about_us":
         st.sidebar.page_link("pages/about_us.py", label="關於我們", icon="👨‍👩‍👧‍👦")
     elif st.session_state.page_name == "activities":
-        st.sidebar.page_link("pages/taipei_branch.py", label="活動", icon="🎯")
+        st.sidebar.page_link("pages/head_office.py", label="總會活動", icon="🎯")
+        st.sidebar.page_link("pages/taipei_branch.py", label="台北分會活動", icon="🎯")
+        st.sidebar.page_link(
+            "pages/taichung_branch.py", label="台中分會活動", icon="📋"
+        )
+        st.sidebar.page_link(
+            "pages/kaohsiung_branch.py", label="高雄分會活動", icon="📅"
+        )
+        st.sidebar.page_link(
+            "pages/northamerica_branch.py", label="北美分會活動", icon="📊"
+        )
     elif st.session_state.page_name == "serviceslife":
         st.sidebar.page_link("pages/culture_spread.py", label="服務與生活")
     elif st.session_state.page_name == "calendar":
