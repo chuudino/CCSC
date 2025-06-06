@@ -2,7 +2,7 @@ name: Empty Commit Push
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # 每天午夜執行
+    - cron: '0 */10 * * *'  # 每 10 小時執行一次
   workflow_dispatch: {}   # 允許手動觸發
 
 jobs:
