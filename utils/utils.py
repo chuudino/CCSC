@@ -3,7 +3,13 @@ from .menu import menu
 
 
 def init_page(page_name: str = "home"):
-    # 設置頁面配置和標題
+    # 強制設定當前頁面的 page_name，避免舊的 session_state 值干擾側邊欄顯示
+    try:
+        st.session_state["page_name"] = page_name
+    except Exception:
+        # 如果 session_state 無法寫入（非常罕見），忽略以避免中斷
+        pass
+
     page_titles = {
         "home": "首頁",
         "about_us": "關於我們",
@@ -32,27 +38,39 @@ def init_page(page_name: str = "home"):
     }
 
     page_title = page_titles.get(page_name, "CCSC Website")
-    st.set_page_config(page_title=f"{page_title} - CCSC", page_icon="⛪", layout="wide")
-    st.logo("static/images/logo.png")
-    if page_name not in st.session_state:
-        st.session_state.page_name = page_name
 
-    menu()
+    try:
+        st.set_page_config(
+            page_title=f"{page_title} - CCSC", page_icon="⛪", layout="wide"
+        )
+    except Exception:
+        # 如果已經設定過 page config，忽略錯誤
+        pass
+
+    # 呼叫 menu（此時 page_name 已正確設定）
+    try:
+        menu()
+    except Exception:
+        # 若 menu 發生錯誤，寬容處理以避免整個頁面中斷
+        pass
 
     # 添加版權聲明
-    st.markdown(
-        """
-        <div style="
-            position: fixed;
-            left: 50%;
-            bottom: 20px;
-            transform: translateX(-50%);
-            text-align: center;
-            background-color: transparent;
-            z-index: 1000;
-        ">
-            <p style="margin: 0; font-size: 14px;">Copyright © 中華基督神修小會</p>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
+    try:
+        st.markdown(
+            """
+            <div style="
+                position: fixed;
+                left: 50%;
+                bottom: 20px;
+                transform: translateX(-50%);
+                text-align: center;
+                background-color: transparent;
+                z-index: 1000;
+            ">
+                <p style="margin: 0; font-size: 14px;">Copyright © 中華基督神修小會</p>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+    except Exception:
+        pass

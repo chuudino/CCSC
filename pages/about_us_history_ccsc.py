@@ -1,7 +1,7 @@
 import streamlit as st
 from utils import init_page
 
-init_page(page_name="History CCSC")  # 初始化頁面設定
+init_page(page_name="about_us_history_ccsc")  # 初始化頁面設定
 
 if st.sidebar.button("↩️ 返回上一頁"):
     st.switch_page("pages/about_us.py")

@@ -1,7 +1,8 @@
 import streamlit as st
 from utils import init_page
 
-init_page(page_name="what_is_ccsc")  # 初始化頁面設定並設置對應的 page_name
+# 與 utils.page_titles 一致
+init_page(page_name="about_us_what_is_ccsc")  # 初始化頁面設定並設置對應的 page_name
 
 if st.sidebar.button("↩️ 返回上一頁"):
     st.switch_page("pages/about_us.py")
