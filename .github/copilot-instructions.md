@@ -1,34 +1,62 @@
-## Quick orientation for AI coding agents
+## CCSC 網站開發指南
 
-This repo is a Streamlit-based website for the CCSC organization. Keep instructions short, precise, and keyed to files below so contributors can be immediately productive.
+這是一個使用 Streamlit 開發的天主教中華基督神修小會官方網站。以下是協助開發的重要資訊：
 
-- Project entry: `main.py` — the Streamlit app entrypoint. Launch locally with: `pip install -r requirements.txt` then `streamlit run main.py`.
-- Pages: the `pages/` folder holds individual Streamlit pages (e.g. `pages/about_us.py`, `pages/activities.py`). Each page imports `init_page` from `utils` and relies on `st.sidebar.page_link` for navigation.
-- Common utilities: `utils/utils.py` and `utils/menu.py` provide page initialization and menu wiring. Prefer adding shared helpers here rather than ad-hoc imports across pages.
-- Static assets: `static/images/` stores logos and banners used by pages. Use relative paths like `static/images/logo.png` when referencing images via Streamlit or components.
+### 專案架構
+- 核心入口: `main.py` - 網站主要入口點
+- 頁面結構: `pages/` 目錄包含所有子頁面，依功能分類:
+  - 關於我們系列: `about_us*.py`
+  - 活動相關: `activities*.py`
+  - 行事曆: `calendar*.py`
+  - 出版品: `publications*.py`
+  - 服務生活: `serviceslife*.py`
+- 共用元件: `utils/` 目錄包含核心功能:
+  - `utils.py`: 頁面初始化和共用函數
+  - `menu.py`: 導航系統
+- 靜態資源: `static/images/` 存放圖片資源
 
-Rules for edits
-- Keep public API surface stable: avoid renaming `init_page` or `menu` functions without updating all `pages/*` imports.
-- Prefer small, focused changes: modify one page or util at a time and run `streamlit run main.py` to validate visual output.
+### 關鍵開發模式
+1. **頁面初始化模式**
+```python
+from utils.utils import init_page
 
-Patterns and examples
-- Page initialization: call `init_page(page_name="about_us")` at the top of a page to set title and nav state (see `pages/about_us.py`).
-- Styling: many pages use `st.markdown(..., unsafe_allow_html=True)` and `components.html(...)` for custom HTML/CSS. Preserve this pattern if you need bespoke layouts.
-- Session state: pages rely on `st.session_state.page_name`; use `st.session_state` to share lightweight state across pages.
+def main():
+    init_page(page_name="about_us")  # 必須在頁面頂部調用
+```
 
-Developer workflows
-- Install deps: `pip install -r requirements.txt` (file lists Streamlit pinned version).
-- Run locally: `streamlit run main.py` — app serves at http://localhost:8501 by default.
-- Quick visual check: modify one page, run the app, use browser refresh. There is no automated test suite in the repo.
+2. **導航系統整合**
+- 所有頁面必須透過 `init_page()` 整合到導航系統
+- 導航狀態透過 `st.session_state.page_name` 維護
 
-Integration points & constraints
-- No database or external API is present in the codebase; pages are static content modules. If adding integrations, include configuration via `.env` and `python-dotenv`.
-- Avoid adding heavy async or background services—Streamlit is single-process; prefer synchronous code for UI rendering.
+3. **分會頁面模式**
+- 總會/分會頁面採用一致的命名模式:
+  - 主頁面: `activities.py`, `calendar.py`
+  - 分會頁面: `activities_taipei_branch.py`, `calendar_taipei_branch.py`
 
-Files to inspect when making changes
-- `main.py`, `utils/utils.py`, `utils/menu.py`, and any file under `pages/` relevant to your change. Use `static/images/` for image assets.
+### 重要工作流程
+1. **本地開發**
+```powershell
+pip install -r requirements.txt  # 安裝依賴
+streamlit run main.py           # 啟動開發伺服器
+```
 
-If you need more context
-- Ask the repo owner which pages are canonical for content (e.g. `about_us`, `calendar`, `activities`) before refactoring layout or navigation.
+2. **環境設定**
+- 使用 `.env` 文件管理環境變數 (可選)
+- 設定 `dev=false` 用於生產環境
 
-Feedback request: I wrote this based on the repository structure and README. Tell me which parts are unclear or what additional examples you want included.
+### 整合要點
+1. **頁面間通訊**
+- 使用 `st.session_state` 共享輕量級狀態
+- 避免跨頁面的複雜狀態管理
+
+2. **自定義風格**
+- 使用 `st.markdown(..., unsafe_allow_html=True)` 實現自定義布局
+- 圖片路徑使用相對路徑: `static/images/logo.png`
+
+### 注意事項
+- 保持 API 穩定性: 不要更改 `init_page` 或 `menu` 的公共介面
+- 同步修改: 修改共用函數時需更新所有相關頁面
+- 單一職責: 每個頁面模組專注於單一功能領域
+- 無資料庫依賴: 目前為純靜態內容，加入外部整合時使用環境變數
+
+遇到問題？請先查看 `README.md` 或聯繫專案維護者。
