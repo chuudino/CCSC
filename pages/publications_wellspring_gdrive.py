@@ -80,7 +80,7 @@ else:
         # 將檔案資訊存入字典
         for file in results.get("files", []):
             try:
-                # 假設檔案名稱格式為 "第 XXX 期:標題"
+                # 使用公開的 Google Drive 檢視器連結（不需要登入）
                 wellspring_issues[file["name"]] = (
                     f"https://drive.google.com/file/d/{file['id']}/preview"
                 )
