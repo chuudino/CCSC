@@ -268,16 +268,16 @@ def menu():
         elif section == "publications":
             entries.extend(
                 [
-                    ("pages/publications.py", "小會刊物", "📚"),
-                    (
-                        "pages/publications_wellspring.py",
-                        _indent_label("心泉文章", 1),
-                        "💧",
-                    ),
+                    # ("pages/publications.py", "小會刊物", "📚"),
+                    # (
+                    #    "pages/publications_wellspring.py",
+                    #    _indent_label("心泉文章", 1),
+                    #    "💧",
+                    # ),
                     (
                         "pages/publications_wellspring_gdrive.py",
                         _indent_label("心泉期刊", 1),
-                        "📖",
+                        "💧",
                     ),
                     (
                         "pages/publications_mustard_seed.py",
