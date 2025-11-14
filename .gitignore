@@ -1,6 +1,27 @@
+# 環境變數
 .env
-__pycache__
 
+# Python 快取
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# IDE 設定
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 臨時檔案
 tempCodeRunnerFile.py
+*.tmp
+
+# Google API 憑證檔案（敏感資訊）
 client_secret_866337794027-2j5hc9sca9b18ovvn6haqmrjin24h346.apps.googleusercontent.com.json
 ace-computer-451607-a1-9c4b30a7b822.json
+*.json.bak
+
+# Streamlit 快取
+.streamlit/secrets.toml

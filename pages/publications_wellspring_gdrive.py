@@ -1,22 +1,41 @@
+"""
+心泉期刊頁面
+此頁面用於顯示心泉期刊的 PDF 檔案,從 Google Drive 讀取並顯示。
+"""
+
 import streamlit as st
 from utils.utils import init_page
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 
-init_page(
-    page_name="publications_wellspring_gdrive"
-)  # 初始化頁面設定並設置對應的 page_name
+# 初始化頁面設定
+init_page(page_name="publications_wellspring_gdrive")
 
-
+# Google Drive API 存取範圍
 SCOPES = ["https://www.googleapis.com/auth/drive.readonly"]
+FOLDER_ID = "11JN4xCs2UIGoLpoGILrw_GuPKbciyJwk"  # 心泉期刊的 Google Drive 資料夾 ID
 
 
 def get_google_drive_service():
+    """
+    初始化並返回 Google Drive API 服務
+
+    Returns:
+        service: Google Drive API 服務實例,如果初始化失敗則返回 None
+    """
     try:
-        # 設定憑證
-        credentials = service_account.Credentials.from_service_account_file(
-            "ace-computer-451607-a1-9c4b30a7b822.json", scopes=SCOPES
-        )
+        # 從 Streamlit Secrets 或本地檔案讀取憑證
+        try:
+            # 優先使用 Streamlit Secrets (用於雲端部署)
+            credentials_info = dict(st.secrets["gcp_service_account"])
+            credentials = service_account.Credentials.from_service_account_info(
+                credentials_info, scopes=SCOPES
+            )
+        except (FileNotFoundError, KeyError):
+            # 本地開發時使用 JSON 檔案
+            credentials = service_account.Credentials.from_service_account_file(
+                "ace-computer-451607-a1-9c4b30a7b822.json", scopes=SCOPES
+            )
 
         # 建立 Google Drive API 服務
         service = build("drive", "v3", credentials=credentials)
