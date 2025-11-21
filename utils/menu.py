@@ -276,7 +276,7 @@ def menu():
                     # ),
                     (
                         "pages/publications_wellspring_gdrive.py",
-                        _indent_label("心泉期刊", 1),
+                        _indent_label("心泉", 1),
                         "💧",
                     ),
                     (
